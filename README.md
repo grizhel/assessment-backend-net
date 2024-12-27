@@ -6,6 +6,8 @@ Readme.md dosyaları oluşturdum. Method'lara comment eklemeye çalıştım anca
 
 Postgresql için connection string'te şifre de bulunmakta. Bilerek o şekilde bıraktım. Zaten sadece bir tane kendi database'inde yetkisi var.
 
+Örnek olarak [1] numaralı linkte açılış sayfasında readme bölümünün en alt kısmında contact ekleyip dönüşün ne olduğu ile ilgili bir çözüm mevcut.
+
 [1] https://github.com/grizhel/pigeon
 [2] https://github.com/grizhla/dotnet-third-party-integrations-core
 

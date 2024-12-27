@@ -22,7 +22,7 @@ namespace dotnet_third_party_integrations_core.Kafka
 			}
 		}
 
-		public static void Subscribe(KafkaOptions conf, string topic, Action<object> act)
+		public static void Subscribe(KafkaOptions conf, string topic, Action<string> act)
 		{
 			using (var c = new ConsumerBuilder<Ignore, string>(conf.GetConfig()).Build())
 			{
@@ -52,13 +52,15 @@ namespace dotnet_third_party_integrations_core.Kafka
 						{
 							Console.WriteLine($"Error occured: {e.Message}");
 						}
-						Thread.Sleep(2000);
+						finally
+						{
+							Thread.Sleep(2000);
+						}
 					}
 				}
 				catch (OperationCanceledException e)
 				{
-					c.Unsubscribe();
-					c.Close();
+					Console.WriteLine(e.Message);
 				}
 				finally 
 				{
