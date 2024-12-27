@@ -1,17 +1,30 @@
+# Adayın Notu
+
+Contact App uygulamasına "pigeon" adını verdim ve aşağıda [1] numaralı url o projenin github'taki sayfasınındır. Kafka kullanımı için de belki ileride kullanabileceğim "dotnet-third-party-integrations-core" nuget projesini oluşturdum. Pigeon uygulamasına assembly olarak ekledim ki sürekli nuget çıkmam gerekmesin diye. Şu an nuget indirilip de pigeon programına bakılabilir.
+
+Readme.md dosyaları oluşturdum. Method'lara comment eklemeye çalıştım ancak Kafka çok zamanımı aldı. Postgresql'i kendi sunucumda kurdum ancak Kafka ram yetersizliğinden dolayı çalışmıyordu, Kafka çalıştrılabilir dosyalarını ve config dosyalarını yine "dotnet-third-party-integrations-core" projesinde yer almaktadır.
+
+Postgresql için connection string'te şifre de bulunmakta. Bilerek o şekilde bıraktım. Zaten sadece bir tane kendi database'inde yetkisi var.
+
+[1] https://github.com/grizhel/pigeon
+[2] https://github.com/grizhla/dotnet-third-party-integrations-core
+
+- Emre Yılmaz
+
 # Backend (.NET) Assessment
 
-## Merhaba 
+## Merhaba
 
 Bu değerlendirme işe başvuru sürecindeki adaylar için hazırlanmış olup, katılacak kimselerin yaklaşım ve yetkinliklerini değerlendirmede bizlere yardımcı olmak için tasarlanmıştır.
 
 Değerlendirme dahilinde; belirtilen süre içerisinde aşağıda kapsamı ve detayları belirlenmiş projeyi tamamlamanızı beklemekteyiz. Dikkat edebileceğiniz bir diğer husus ise, bizlerin doğru bir değerlendirme yapmamıza yardımcı olacak şekilde iletebileceğiniz en iyi çalışmayı bizlere teslim ediyor olmanız.
-
 
 ### Senaryo
 
 Birbirleri ile haberleşen minimum iki microservice'in olduğu bir yapı tasarlayarak, basit bir telefon rehberi uygulaması oluşturulması sağlanacaktır.
 
 Beklenen işlevler:
+
 - Rehberde kişi oluşturma
 - Rehberde kişi kaldırma
 - Rehberdeki kişiye iletişim bilgisi ekleme
@@ -21,7 +34,6 @@ Beklenen işlevler:
 - Rehberdeki kişilerin bulundukları konuma göre istatistiklerini çıkartan bir rapor talebi
 - Sistemin oluşturduğu raporların listelenmesi
 - Sistemin oluşturduğu bir raporun detay bilgilerinin getirilmesi
-
 
 ### Teknik Tasarım
 
@@ -53,13 +65,12 @@ Veri yapısı olarak da:
 - Raporun Talep Edildiği Tarih
 - Rapor Durumu (Hazırlanıyor, Tamamlandı)
 
-
-**NOT:** Değerlendirme ile ilgili beklentiler için *Teknik Beklentiler* bölümünü dikkatli okuyunuz.
-
+**NOT:** Değerlendirme ile ilgili beklentiler için _Teknik Beklentiler_ bölümünü dikkatli okuyunuz.
 
 ### Teknik Beklentiler
 
 - Kullanılacak Teknolojiler:
+
   - .NET Core
   - Git
   - Postgres veya MongoDB
@@ -74,16 +85,13 @@ Veri yapısı olarak da:
   - Servislerin HTTP üzerinden REST veya GraphQL protokolleri üzerinden iletişimi sağlanmalı
   - Rapor kısmındaki asenkron yapının sağlanması için message queue gibi sistemler kullanılmalıdır
 
-
 ### Çalışmanın Tamamlanması
 
 Çalışma tamamlandığında bu codebase'i kişisel git repository'sine aktarmanız, çalışma bitiminde de bu repository adresiyle paylaşmanız beklenecektir.
 
-
 ## Sorularınız
 
 Değerlendirmelerle ilgili sorularınızı [github@setur.com.tr](mailto:github@setur.com.tr) adresine iletebilirsiniz.
-
 
 ### Lisans
 
