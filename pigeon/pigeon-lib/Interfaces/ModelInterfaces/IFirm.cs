@@ -2,9 +2,9 @@
 
 public interface IFirm
 {
-	Guid Id { get; set; }
+	Guid FirmId { get; set; }
 
 	string Name { get; set; }
 
-	Guid LocationId { get; set; }
+	Guid? LocationId { get; set; }
 }

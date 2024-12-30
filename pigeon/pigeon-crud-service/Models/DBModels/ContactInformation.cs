@@ -5,19 +5,19 @@ using pigeon_lib.Enums;
 
 namespace pigeon_crud_service.Models.DBModels;
 
-[Table(nameof(ContactInfo))]
-public class ContactInfo : IContactInfo
+[Table(nameof(ContactInformation))]
+public class ContactInformation : IContactInformation
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public Guid Id { get; set; }
+	public Guid ContactInformationId { get; set; }
 
 	[ForeignKey(nameof(Contact))]
 	public Guid ContactId { get; set; }
 
 	public required ContactTypes ContactType { get; set; }
 
-	public required string Info { get; set; }
+	public required string Value { get; set; }
 
 	public Contact? Contact { get; set; }
 }

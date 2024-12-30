@@ -9,12 +9,12 @@ public class Firm : IFirm
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
+    public Guid FirmId { get; set; }
 
     [Column(TypeName = "varchar(128)")]
     public required string Name { get; set; }
 
-    public Guid LocationId { get; set; }
+    public Guid? LocationId { get; set; }
 
     public Location? Location { get; set; }
 

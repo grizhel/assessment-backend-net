@@ -17,41 +17,36 @@ namespace pigeon_crud_service.Services
 {
 	public class FirmService : ServiceBase, IService<Firm>
 	{
-		private readonly PigeonDBContext dbContext;
+		private readonly PigeonCrudDBContext dbContext;
 
-		public FirmService(PigeonDBContext dbContext, IOptions<AppOptions> appOptions) : base(appOptions)
+		public FirmService(PigeonCrudDBContext dbContext, IOptions<AppOptions> appOptions) : base(appOptions)
 		{
 			this.dbContext = dbContext;
 		}
 
 		public async Task<Firm?> GetAsync(Guid id)
 		{
-			return await dbContext.Firms.FirstOrDefaultAsync(q => q.Id == id);
+			return await dbContext.Firms.FirstOrDefaultAsync(q => q.FirmId == id);
+		}
+
+		public Task<Firm> GetDetailsAsync(Guid id)
+		{
+			throw new NotImplementedException();
 		}
 
 		public async Task<List<Firm>> GetListAsync()
 		{
 			return [.. await dbContext.Firms.Take(_limitList).ToListAsync()];
 		}
-
-		public async Task<List<Firm>> FilterAsync(IFilterParams filterParams)
+		
+		public Task<List<Firm>> FilterStringAsync(string searchString, bool quick = false)
 		{
-			var locationIdStr = filterParams.Params.GetValueOrDefault("locationId");
+			throw new NotImplementedException();
+		}
 
-			var queryBuilder = dbContext.Firms.AsQueryable();
-			if (locationIdStr != null)
-			{
-				if (Guid.TryParse(locationIdStr, out var locationId))
-				{
-					queryBuilder = queryBuilder.Where(q => q.Id == locationId);
-				}
-				else
-				{
-					throw new Exception("Firma Id UUID formatında değil veya yanlış.");
-				}
-			}
-
-			return [.. await queryBuilder.Take(_limitList).ToListAsync()];
+		public Task<List<Firm>> FilterParamsAsync(IFilterParams filterParams, bool quick = false)
+		{
+			throw new NotImplementedException();
 		}
 
 		public async Task<ReactedResult<Firm>> PostAsync(Firm firm)
@@ -63,7 +58,7 @@ namespace pigeon_crud_service.Services
 
 		public async Task<ReactedResult<Firm>> PutAsync(Firm firm)
 		{
-			var firmEntity = await dbContext.Firms.FirstOrDefaultAsync(q => q.Id == firm.Id);
+			var firmEntity = await dbContext.Firms.FirstOrDefaultAsync(q => q.FirmId == firm.FirmId);
 			dbContext.Firms.Update(firm);
 			await dbContext.SaveChangesAsync();
 			return ReactedResult<Firm>.Successful(firm);
@@ -71,7 +66,7 @@ namespace pigeon_crud_service.Services
 
 		public async Task<ReactedResult<Firm>> DeleteAsync(Guid id)
 		{
-			var firm = await dbContext.Firms.FirstOrDefaultAsync(q => q.Id == id);
+			var firm = await dbContext.Firms.FirstOrDefaultAsync(q => q.FirmId == id);
 			if (firm == null)
 			{
 				return ReactedResult<Firm>.Failed(HttpStatusCode.NotFound, $"There is not any Firm with Id of {id}");

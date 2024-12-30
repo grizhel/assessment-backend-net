@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using pigeon_report_service.Models;
@@ -12,9 +13,11 @@ using pigeon_report_service.Models;
 namespace pigeon_report_service.Migrations
 {
     [DbContext(typeof(PigeonReportDBContext))]
-    partial class PigeonReportDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241229110737_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +30,7 @@ namespace pigeon_report_service.Migrations
 
             modelBuilder.Entity("pigeon_report_service.Models.Info", b =>
                 {
-                    b.Property<Guid>("InfoId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -37,14 +40,14 @@ namespace pigeon_report_service.Migrations
                     b.Property<int>("InfoType")
                         .HasColumnType("integer");
 
-                    b.HasKey("InfoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Info", "report");
                 });
 
             modelBuilder.Entity("pigeon_report_service.Models.Report", b =>
                 {
-                    b.Property<Guid>("ReportId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -68,7 +71,7 @@ namespace pigeon_report_service.Migrations
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("timestamp");
 
-                    b.HasKey("ReportId");
+                    b.HasKey("Id");
 
                     b.ToTable("Report", "report");
                 });
